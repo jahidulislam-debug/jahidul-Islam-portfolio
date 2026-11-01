@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050812">
-  <meta name="description" content="Jahidul Islam | MSc Applied AI and User Experience graduate. Portfolio, projects and technical skills.">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Jahidul Islam - Applied AI, UX Research and Technical Support Portfolio">
   <title>Jahidul Islam | AI & Technology Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,651 +14,1165 @@
 
   <style>
     :root {
-      --bg: #050812;
-      --panel: #0b1222;
-      --blue: #3987ff;
-      --cyan: #54e5ff;
-      --text: #edf4ff;
-      --muted: #9baac3;
-      --line: rgba(110,160,255,.18);
+      --navy: #07111f;
+      --navy-light: #101e30;
+      --cyan: #42d9e8;
+      --blue: #527bff;
+      --ink: #172335;
+      --muted: #64748b;
+      --paper: #f5f7fb;
+      --white: #ffffff;
+      --line: #e4e9f1;
+      --mono: "DM Mono", monospace;
+      --font: "Inter", sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, sans-serif;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--paper);
       line-height: 1.7;
       overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
 
-    #particles {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      pointer-events: none;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 75% 15%, rgba(20,90,220,.16), transparent 42%),
-        radial-gradient(ellipse at 10% 75%, rgba(0,180,220,.08), transparent 38%);
+    button {
+      font: inherit;
     }
 
-    .container { width: min(1120px, 90%); margin: auto; }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 20;
-      background: rgba(5,8,18,.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
     }
+
+    /* Navigation */
+
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      background: rgba(7, 17, 31, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
     .nav-inner {
-      min-height: 76px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
     .logo {
+      color: white;
+      font-size: 1.15rem;
       font-weight: 800;
-      letter-spacing: -.8px;
-      font-size: 19px;
-    }
-    .logo span { color: var(--cyan); }
-    .nav-links { display: flex; gap: 27px; align-items: center; }
-    .nav-links a {
-      color: var(--muted);
-      font-size: 13px;
-      transition: .25s;
-    }
-    .nav-links a:hover { color: var(--cyan); }
-    .menu-button {
-      display: none;
-      color: var(--text);
-      background: transparent;
-      border: 1px solid var(--line);
-      padding: 8px 12px;
-      border-radius: 8px;
+      letter-spacing: -.5px;
     }
 
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 35px;
-      padding-top: 105px;
-    }
-    .eyebrow {
+    .logo span {
       color: var(--cyan);
-      font-family: "DM Mono", monospace;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
     }
-    h1 {
-      font-size: clamp(46px, 7vw, 82px);
-      line-height: 1.04;
-      letter-spacing: -4px;
-      margin: 20px 0;
-    }
-    h1 span {
-      background: linear-gradient(100deg, #fff, var(--cyan), var(--blue));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .hero-description {
-      color: var(--muted);
-      max-width: 600px;
-      font-size: 16px;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
+
+    .nav-links {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 12px 21px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      font-size: 13px;
-      font-weight: 700;
-      transition: .25s;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #c5d0df;
+      font-size: .87rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .menu-toggle {
+      display: none;
+      color: white;
+      border: 0;
+      background: transparent;
+      font-size: 1.7rem;
       cursor: pointer;
     }
-    .btn-primary {
-      color: #04101c;
-      background: linear-gradient(110deg, var(--cyan), #6b9fff);
-      border: 0;
-    }
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(40,140,255,.2); }
-    .btn-secondary { background: rgba(255,255,255,.03); }
 
-    .hero-meta {
+    /* Hero */
+
+    .hero {
+      position: relative;
+      min-height: 730px;
+      padding: 150px 0 100px;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        radial-gradient(ellipse at 75% 45%, rgba(33, 103, 156, .24), transparent 45%),
+        linear-gradient(135deg, #07111f 0%, #0b1930 55%, #101b32 100%);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    #particleCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 45px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 25px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.1rem);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-description {
+      color: #b7c5d7;
+      max-width: 570px;
+      font-size: 1.04rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 35px;
-      color: var(--muted);
-      font-size: 12px;
+      gap: 9px;
+      margin-bottom: 35px;
     }
-    .hero-meta span::before { content: "●"; color: var(--cyan); margin-right: 8px; }
 
-    .orb-stage {
-      height: 440px;
-      display: grid;
-      place-items: center;
+    .hero-tags span {
+      border: 1px solid rgba(66,217,232,.25);
+      background: rgba(66,217,232,.06);
+      color: #c5f5f8;
+      border-radius: 30px;
+      padding: 7px 13px;
+      font-family: var(--mono);
+      font-size: .72rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 21px;
+      border-radius: 7px;
+      font-size: .9rem;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #06121e;
+    }
+
+    .btn-primary:hover {
+      background: #8af0f5;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.35);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    /* DNA visual */
+
+    .dna-stage {
+      min-height: 430px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       perspective: 900px;
     }
-    .orb {
-      position: relative;
-      width: min(330px, 75vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(84,229,255,.35), transparent 20%),
-        radial-gradient(circle at 50% 50%, rgba(40,100,255,.22), transparent 60%),
-        radial-gradient(circle, #0d244c 0%, #071124 55%, transparent 70%);
-      box-shadow: 0 0 70px rgba(35,120,255,.18), inset 0 0 55px rgba(60,180,255,.12);
-      animation: float 7s ease-in-out infinite;
-      transform-style: preserve-3d;
+
+    #dnaCanvas {
+      width: 100%;
+      max-width: 490px;
+      height: 430px;
+      display: block;
     }
-    .orb::before, .orb::after {
-      content: "";
+
+    .code-float {
       position: absolute;
-      inset: 8%;
-      border: 1px solid rgba(84,229,255,.55);
-      border-radius: 50%;
-      transform: rotateX(68deg) rotateY(-20deg);
-      box-shadow: 0 0 22px rgba(84,229,255,.15);
-    }
-    .orb::after {
-      inset: 1%;
-      border-color: rgba(57,135,255,.55);
-      transform: rotateY(68deg) rotateX(20deg);
-      animation: spin 15s linear infinite;
-    }
-    .orb-core {
-      position: absolute;
-      inset: 31%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #c7faff, #3987ff 35%, #10265c 75%);
-      box-shadow: 0 0 45px rgba(84,229,255,.65);
-      animation: pulse 3s ease-in-out infinite;
-    }
-    .orbit {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 20px var(--cyan);
-      top: 12%;
-      left: 48%;
-    }
-    .orb-label {
-      position: absolute;
-      bottom: 8%;
-      left: 50%;
-      transform: translateX(-50%);
       color: var(--cyan);
-      font: 11px "DM Mono", monospace;
-      letter-spacing: 3px;
-      white-space: nowrap;
+      font-family: var(--mono);
+      font-size: .78rem;
+      opacity: .65;
+      animation: float 5s ease-in-out infinite;
+      pointer-events: none;
     }
+
+    .code-one { top: 8%; left: 4%; }
+    .code-two { top: 24%; right: 0; animation-delay: 1s; }
+    .code-three { bottom: 16%; left: 2%; animation-delay: 2s; }
+    .code-four { bottom: 5%; right: 9%; animation-delay: .5s; }
 
     @keyframes float {
-      0%,100% { transform: translateY(0) rotate(-4deg); }
-      50% { transform: translateY(-18px) rotate(4deg); }
-    }
-    @keyframes spin { to { transform: rotateY(428deg) rotateX(20deg); } }
-    @keyframes pulse {
-      0%,100% { transform: scale(.94); opacity: .85; }
-      50% { transform: scale(1.08); opacity: 1; }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
-    section { padding: 105px 0; scroll-margin-top: 75px; }
-    .section-heading { margin-bottom: 38px; }
-    .section-heading h2 { font-size: clamp(30px, 4vw, 43px); letter-spacing: -1.5px; margin-top: 9px; }
-    .section-heading p { color: var(--muted); max-width: 650px; margin-top: 8px; }
+    /* General sections */
 
-    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 25px; }
-    .panel {
-      background: linear-gradient(145deg, rgba(16,29,53,.9), rgba(8,14,27,.92));
+    section.content-section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: #168c9b;
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      color: var(--ink);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      letter-spacing: -1.3px;
+    }
+
+    .section-heading p {
+      max-width: 650px;
+      margin-top: 13px;
+      color: var(--muted);
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      color: #536176;
+      margin-bottom: 17px;
+    }
+
+    .about-card {
+      background: white;
       border: 1px solid var(--line);
-      border-radius: 15px;
+      border-radius: 13px;
       padding: 27px;
-      transition: .3s;
+      box-shadow: 0 12px 35px rgba(20,40,70,.04);
     }
-    .panel:hover { border-color: rgba(84,229,255,.4); transform: translateY(-4px); }
-    .panel p { color: var(--muted); }
-    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
-    .tag {
-      font: 11px "DM Mono", monospace;
-      padding: 7px 11px;
-      border-radius: 30px;
-      color: var(--cyan);
-      background: rgba(55,145,255,.09);
+
+    .about-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 17px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: .88rem;
+    }
+
+    .info-row:last-child {
+      border-bottom: 0;
+    }
+
+    .info-row span:first-child {
+      color: var(--muted);
+    }
+
+    .info-row span:last-child {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Projects */
+
+    .projects-section {
+      background: #edf1f7;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: white;
       border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 29px;
+      transition: transform .25s, box-shadow .25s;
     }
-    .stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 13px; }
-    .stat { padding: 18px; background: rgba(255,255,255,.025); border: 1px solid var(--line); border-radius: 10px; }
-    .stat strong { display: block; font-size: 25px; color: var(--cyan); }
-    .stat small { color: var(--muted); }
 
-    .project-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
-    .project-number { font: 12px "DM Mono", monospace; color: var(--cyan); }
-    .project-card h3 { margin: 15px 0 10px; font-size: 22px; }
-    .project-card p { font-size: 14px; }
-    .project-card .tags { margin-bottom: 20px; }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(20,40,70,.09);
+    }
 
-    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 17px; }
-    .skill-card h3 { margin-bottom: 13px; font-size: 17px; }
-    .skill-card ul { list-style: none; color: var(--muted); font-size: 13px; }
-    .skill-card li { padding: 7px 0; border-bottom: 1px solid rgba(110,160,255,.09); }
-    .skill-card li::before { content: "›"; color: var(--cyan); margin-right: 9px; }
+    .project-number {
+      color: #168c9b;
+      font-family: var(--mono);
+      font-size: .77rem;
+      margin-bottom: 17px;
+    }
 
-    .timeline { border-left: 1px solid rgba(84,229,255,.35); margin-left: 7px; }
-    .timeline-item { position: relative; padding: 0 0 30px 28px; }
+    .project-card h3 {
+      font-size: 1.22rem;
+      line-height: 1.4;
+      margin-bottom: 13px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: .91rem;
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 19px;
+    }
+
+    .project-tags span {
+      background: #edf7f8;
+      color: #167c89;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-family: var(--mono);
+      font-size: .68rem;
+    }
+
+    .project-note {
+      color: #78869a;
+      font-size: .78rem;
+      font-style: italic;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .skill-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 23px;
+    }
+
+    .skill-card .skill-icon {
+      color: #168c9b;
+      font-family: var(--mono);
+      font-size: .82rem;
+      margin-bottom: 13px;
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    /* Experience and education */
+
+    .timeline {
+      border-left: 2px solid #cfe4e8;
+      margin-left: 8px;
+      padding-left: 28px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 30px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
     .timeline-item::before {
       content: "";
       position: absolute;
-      left: -6px;
-      top: 8px;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
+      width: 12px;
+      height: 12px;
       background: var(--cyan);
-      box-shadow: 0 0 15px var(--cyan);
+      border: 3px solid white;
+      border-radius: 50%;
+      left: -36px;
+      top: 6px;
+      box-shadow: 0 0 0 2px #b6dfe4;
     }
-    .timeline-item h3 { font-size: 18px; }
-    .timeline-item .date { font: 11px "DM Mono", monospace; color: var(--cyan); }
-    .timeline-item p { color: var(--muted); font-size: 14px; margin-top: 6px; }
 
-    .contact-panel { text-align: center; padding: 55px 25px; }
-    .contact-panel h2 { font-size: clamp(30px,5vw,48px); margin: 12px 0; }
-    .contact-panel p { max-width: 580px; margin: auto; color: var(--muted); }
-    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
-
-    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); font-size: 12px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
-
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 800px) {
-      .hero { grid-template-columns: 1fr; padding-top: 135px; text-align: center; }
-      .hero-description { margin: auto; }
-      .hero-actions, .hero-meta { justify-content: center; }
-      .orb-stage { height: 350px; }
-      .about-grid, .project-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2,1fr); }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 76px;
-        left: 0;
-        width: 100%;
-        padding: 20px 5%;
-        background: #080e1c;
-        flex-direction: column;
-        align-items: flex-start;
-        border-bottom: 1px solid var(--line);
-      }
-      .nav-links.open { display: flex; }
-      .menu-button { display: block; }
+    .timeline-item h3 {
+      font-size: 1.04rem;
     }
-    @media (max-width: 520px) {
-      h1 { letter-spacing: -2px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      section { padding: 75px 0; }
-      .orb-stage { height: 300px; }
+
+    .timeline-meta {
+      color: #168c9b;
+      font-family: var(--mono);
+      font-size: .75rem;
+      margin: 4px 0 8px;
     }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+    }
+
+    /* Contact */
+
+    .contact-section {
+      background: var(--navy);
+      color: white;
+    }
+
+    .contact-section .section-heading h2 {
+      color: white;
+    }
+
+    .contact-section .section-heading p {
+      color: #aebdd0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contact-copy {
+      color: #b7c5d7;
+      max-width: 480px;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 13px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 15px 17px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 8px;
+      color: #e0eaf4;
+      overflow-wrap: anywhere;
+      transition: border .2s, background .2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--cyan);
+      background: rgba(66,217,232,.06);
+    }
+
+    .contact-link strong {
+      display: block;
+      color: var(--cyan);
+      font-size: .72rem;
+      font-family: var(--mono);
+      font-weight: 400;
+      margin-bottom: 3px;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #050c16;
+      color: #8fa0b5;
+      padding: 23px 0;
+      text-align: center;
+      font-size: .8rem;
+    }
+
+    /* Reveal animation */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       *, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
         transition-duration: .01ms !important;
       }
-      .reveal { opacity: 1; transform: none; }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .dna-stage {
+        min-height: 350px;
+      }
+
+      #dnaCanvas {
+        height: 350px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid,
+      .two-column {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: #091525;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        border-top: 1px solid rgba(255,255,255,.08);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 125px 0 65px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.8px;
+      }
+
+      .project-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section.content-section {
+        padding: 70px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .dna-stage {
+        min-height: 290px;
+      }
+
+      #dnaCanvas {
+        height: 290px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <canvas id="particles"></canvas>
 
-  <nav>
+  <nav class="navbar">
     <div class="container nav-inner">
-      <a class="logo" href="#home">JAHIDUL<span>.</span></a>
-      <button class="menu-button" id="menuButton" aria-label="Open navigation">Menu</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <a href="#home" class="logo">JAHIDUL<span>.</span></a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
   </nav>
 
-  <main>
-    <header class="container hero" id="home">
-      <div>
-        <div class="eyebrow">MSc Applied AI & User Experience · Merit</div>
+  <header class="hero" id="home">
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">Technology · Research · Problem Solving</div>
+
         <h1>Jahidul<br><span>Islam.</span></h1>
+
         <p class="hero-description">
-          AI and UX graduate interested in building useful technology and solving practical problems.
-          My work includes research into trust in AI and an independent algorithmic trading-bot project.
-          I am looking for opportunities in IT support, AI and technology in the UK.
+          MSc Applied Artificial Intelligence and User Experience graduate
+          with an interest in AI, user-centred technology, technical support
+          and practical problem solving.
         </p>
+
+        <div class="hero-tags">
+          <span>Artificial Intelligence</span>
+          <span>UX Research</span>
+          <span>Python</span>
+          <span>Technical Support</span>
+        </div>
+
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">Explore my projects ↗</a>
-          <a class="btn btn-secondary" href="#contact">Get in touch</a>
-        </div>
-        <div class="hero-meta">
-          <span>Based in the United Kingdom</span>
-          <span>Open to technology roles</span>
+          <a href="#projects" class="btn btn-primary">Explore my work ↗</a>
+          <a href="#contact" class="btn btn-outline">Contact me</a>
+          <a href="CV.pdf" class="btn btn-outline" download>Download CV ↓</a>
         </div>
       </div>
 
-      <div class="orb-stage" aria-label="Animated abstract AI core">
-        <div class="orb">
-          <div class="orb-core"></div>
-          <div class="orbit"></div>
-          <div class="orb-label">AI · HUMAN · TECHNOLOGY</div>
-        </div>
+      <div class="dna-stage" id="dnaStage">
+        <span class="code-float code-one">0101 // neural</span>
+        <span class="code-float code-two">&lt;AI /&gt;</span>
+        <span class="code-float code-three">DNA_SEQUENCE</span>
+        <span class="code-float code-four">0x7F · Python</span>
+        <canvas id="dnaCanvas" aria-label="Interactive animated DNA helix"></canvas>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section id="about">
+  <main>
+
+    <section class="content-section" id="about">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">01 / About</div>
+          <div class="section-kicker">01 / About me</div>
           <h2>Technology with a human perspective.</h2>
         </div>
+
         <div class="about-grid">
-          <div class="panel reveal">
+          <div class="about-copy reveal">
             <p>
-              I completed an MSc in Applied Artificial Intelligence and User Experience
-              at Abertay University, graduating with Merit. My academic work explored
-              how transparency in AI systems can help university students develop
-              more calibrated trust in AI-generated advice.
+              I am a Dundee-based MSc graduate in Applied Artificial
+              Intelligence and User Experience from Abertay University.
+              My academic interests include transparent AI systems,
+              human-computer interaction and user trust in AI-assisted tools.
             </p>
-            <br>
+
             <p>
-              I enjoy learning how systems work, investigating problems and making
-              technology easier to understand and use. I am developing my practical
-              IT support skills alongside my interests in AI, data and user experience.
+              My master's project explored how different forms of AI
+              transparency can influence university students' calibrated
+              trust, perceived reliability and judgement confidence.
+              I developed a research prototype using Python and Streamlit.
             </p>
-            <div class="tags">
-              <span class="tag">IT Support</span>
-              <span class="tag">Artificial Intelligence</span>
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Data Analysis</span>
-              <span class="tag">UX Research</span>
-            </div>
+
+            <p>
+              Alongside my academic work, I am developing practical
+              technical skills in Python, Windows troubleshooting,
+              Microsoft 365 and networking. I enjoy learning how systems
+              work and helping people solve problems.
+            </p>
           </div>
-          <div class="stats reveal">
-            <div class="stat"><strong>Merit</strong><small>MSc achievement</small></div>
-            <div class="stat"><strong>180</strong><small>SCQF credits</small></div>
-            <div class="stat"><strong>02</strong><small>Featured projects</small></div>
-            <div class="stat"><strong>UK</strong><small>Career location</small></div>
+
+          <div class="about-card reveal">
+            <h3>Profile</h3>
+            <div class="info-row">
+              <span>Location</span>
+              <span>Dundee, Scotland</span>
+            </div>
+            <div class="info-row">
+              <span>Qualification</span>
+              <span>MSc, Merit</span>
+            </div>
+            <div class="info-row">
+              <span>University</span>
+              <span>Abertay University</span>
+            </div>
+            <div class="info-row">
+              <span>Interests</span>
+              <span>AI & IT Support</span>
+            </div>
+            <div class="info-row">
+              <span>Languages</span>
+              <span>English, Bengali</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section class="content-section projects-section" id="projects">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">02 / Selected work</div>
-          <h2>Projects and experiments.</h2>
-          <p>Academic research and independent technical exploration.</p>
+          <div class="section-kicker">02 / Selected work</div>
+          <h2>Projects and research.</h2>
+          <p>
+            A selection of academic and independent projects exploring
+            artificial intelligence, software development and data analysis.
+          </p>
         </div>
+
         <div class="project-grid">
-          <article class="panel project-card reveal">
-            <div class="project-number">PROJECT_01 / MSc RESEARCH</div>
+
+          <article class="project-card reveal">
+            <div class="project-number">PROJECT 01 / MSc RESEARCH</div>
             <h3>Transparent AI Study Coach</h3>
             <p>
-              Designed and evaluated a prototype AI study coach to explore how
-              transparency affects calibrated trust, perceived reliability and
-              judgement confidence among university students.
+              Designed and evaluated a research prototype investigating
+              how AI transparency affects calibrated trust among university
+              students. The study explored different transparency conditions,
+              perceived reliability and judgement confidence.
             </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Streamlit</span>
-              <span class="tag">UX Research</span>
-              <span class="tag">AI Transparency</span>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Streamlit</span>
+              <span>UX Research</span>
+              <span>AI Transparency</span>
+              <span>CSV</span>
             </div>
-            <p><strong>Focus:</strong> Four transparency conditions, advice scenarios and participant feedback.</p>
+            <div class="project-note">
+              Master's project, Abertay University.
+            </div>
           </article>
 
-          <article class="panel project-card reveal">
-            <div class="project-number">PROJECT_02 / PERSONAL PROJECT</div>
-            <h3>XAUUSD Algorithmic Trading Bot</h3>
+          <article class="project-card reveal">
+            <div class="project-number">PROJECT 02 / PERSONAL PROJECT</div>
+            <h3>XAUUSD Algorithmic Trading Research Bot</h3>
             <p>
-              An independent MetaTrader 5 Expert Advisor project exploring
-              multi-timeframe market analysis, price action, risk controls and
-              structured trade journaling for gold (XAUUSD).
+              Developed an Expert Advisor research project for MetaTrader 5,
+              focused on gold-market analysis, multi-timeframe conditions,
+              risk controls and structured trade logging. Includes a
+              Shadow Mode approach for testing without placing real-money
+              trades.
             </p>
-            <div class="tags">
-              <span class="tag">MQL5</span>
-              <span class="tag">MetaTrader 5</span>
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">NumPy</span>
+            <div class="project-tags">
+              <span>MQL5</span>
+              <span>MetaTrader 5</span>
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>Data Analysis</span>
             </div>
-            <p><strong>Focus:</strong> Strategy testing, shadow-mode analysis and risk management.</p>
-            <p style="font-size:12px;margin-top:14px;">Personal educational project. Not financial advice. No profitability is guaranteed.</p>
+            <div class="project-note">
+              Personal technical project. No profitability claims.
+            </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section id="skills">
+    <section class="content-section" id="skills">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">03 / Capabilities</div>
-          <h2>Skills and learning.</h2>
-          <p>A mix of academic foundations, project experience and developing practical skills.</p>
+          <div class="section-kicker">03 / Capabilities</div>
+          <h2>Skills and technical interests.</h2>
+          <p>
+            Skills developed through postgraduate study, independent
+            projects and practical work experience.
+          </p>
         </div>
+
         <div class="skills-grid">
-          <div class="panel skill-card reveal">
-            <h3>Development & Tools</h3>
-            <ul>
-              <li>Python fundamentals</li>
-              <li>Streamlit</li>
-              <li>MQL5 / MetaTrader 5</li>
-              <li>Pandas and NumPy</li>
-              <li>CSV data handling</li>
-              <li>Microsoft Office</li>
-            </ul>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">01 / AI</div>
+            <h3>Artificial Intelligence</h3>
+            <p>AI transparency, human-AI interaction, calibrated trust and AI-assisted systems.</p>
           </div>
-          <div class="panel skill-card reveal">
-            <h3>AI & Research</h3>
-            <ul>
-              <li>Artificial intelligence</li>
-              <li>Machine learning foundations</li>
-              <li>Data science foundations</li>
-              <li>UX research</li>
-              <li>Research methods</li>
-              <li>Human-centred design</li>
-            </ul>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">02 / UX</div>
+            <h3>UX Research</h3>
+            <p>Research design, user experience evaluation, questionnaires and confidence measures.</p>
           </div>
-          <div class="panel skill-card reveal">
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">03 / CODE</div>
+            <h3>Programming</h3>
+            <p>Python fundamentals, Streamlit, CSV data handling and MQL5 project development.</p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">04 / IT</div>
             <h3>IT Support Learning</h3>
-            <ul>
-              <li>Windows troubleshooting</li>
-              <li>Microsoft 365 and Outlook</li>
-              <li>Wi-Fi and connectivity</li>
-              <li>IP and DNS fundamentals</li>
-              <li>Printer troubleshooting</li>
-              <li>Problem investigation</li>
-            </ul>
+            <p>Windows troubleshooting, Microsoft 365, Outlook, printer issues and basic networking.</p>
           </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">05 / DATA</div>
+            <h3>Data and Office Tools</h3>
+            <p>Microsoft Office, data entry, structured records and basic data analysis.</p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">06 / PEOPLE</div>
+            <h3>Communication</h3>
+            <p>Customer service, query handling, teamwork, adaptability and practical problem solving.</p>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="experience">
+    <section class="content-section projects-section" id="experience">
       <div class="container">
         <div class="section-heading reveal">
-          <div class="eyebrow">04 / Background</div>
-          <h2>Education and experience.</h2>
+          <div class="section-kicker">04 / Professional background</div>
+          <h2>Work experience.</h2>
         </div>
-        <div class="panel reveal">
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="date">2025 – 2026</div>
-              <h3>MSc Applied Artificial Intelligence and User Experience</h3>
-              <p>Abertay University, United Kingdom · Merit</p>
-            </div>
-            <div class="timeline-item">
-              <div class="date">UNDERGRADUATE</div>
-              <h3>BSc Computer Science and Engineering</h3>
-              <p>North South University, Bangladesh</p>
-            </div>
-            <div class="timeline-item">
-              <div class="date">SEPTEMBER 2026 – PRESENT</div>
-              <h3>Production Operative · 2 Sisters Food Group</h3>
-              <p>Working to procedures, maintaining quality standards and contributing to a team environment.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="date">FEBRUARY – AUGUST 2026</div>
-              <h3>Waiter · Chillies of Carnoustie</h3>
-              <p>Customer service, communication and working in a busy hospitality environment.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="date">NOVEMBER 2025 – JANUARY 2026</div>
-              <h3>Retail Assistant · Tesco, Dundee South Road</h3>
-              <p>Customer assistance, teamwork and retail operations.</p>
-            </div>
-            <div class="timeline-item">
-              <div class="date">PREVIOUS EXPERIENCE</div>
-              <h3>Production Operative · Kettle Produce</h3>
-              <p>Production environment experience and following workplace procedures.</p>
-            </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <h3>Production Operative</h3>
+            <div class="timeline-meta">2 Sisters Food Group · September 2026 – Present</div>
+            <p>
+              Working in a production environment, following operational
+              procedures, maintaining quality and safety standards and
+              contributing to team targets.
+            </p>
           </div>
+
+          <div class="timeline-item reveal">
+            <h3>Waiter</h3>
+            <div class="timeline-meta">Chillies of Carnoustie · February 2026 – August 2026</div>
+            <p>
+              Supported customer service operations, handled customer
+              requests and worked with colleagues in a busy hospitality
+              environment.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h3>Retail Assistant</h3>
+            <div class="timeline-meta">Tesco, Dundee South Road · November 2025 – January 2026</div>
+            <p>
+              Assisted customers, supported store operations and helped
+              maintain product availability and an organised retail
+              environment.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h3>Production Operative</h3>
+            <div class="timeline-meta">Kettle Produce · Previous experience</div>
+            <p>
+              Worked in a food production environment, supporting
+              production activities and following workplace procedures.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="content-section" id="education">
       <div class="container">
-        <div class="panel contact-panel reveal">
-          <div class="eyebrow">05 / Contact</div>
+        <div class="section-heading reveal">
+          <div class="section-kicker">05 / Academic background</div>
+          <h2>Education.</h2>
+        </div>
+
+        <div class="two-column">
+
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <h3>MSc Applied Artificial Intelligence and User Experience</h3>
+              <div class="timeline-meta">Abertay University · 2025–2026</div>
+              <p>
+                Awarded Merit. Focused on applied AI, user experience,
+                human-computer interaction, research methods and machine
+                learning.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <h3>BSc Computer Science and Engineering</h3>
+              <div class="timeline-meta">North South University · Bangladesh</div>
+              <p>
+                Undergraduate study in computer science and engineering,
+                providing an academic foundation in computing and
+                technology.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-kicker">06 / Get in touch</div>
           <h2>Let's connect.</h2>
           <p>
-            I am open to opportunities in IT support, technical support,
-            AI and data-related roles in the United Kingdom.
+            Interested in discussing technology, AI research,
+            technical support opportunities or potential collaborations?
+            Feel free to get in touch.
           </p>
-          <div class="contact-links">
-            <!-- Replace the email address and links below with your own details. -->
-            <a class="btn btn-primary" href="mailto:YOUR_EMAIL@example.com">Email me ↗</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn btn-secondary" href="https://github.com/jahidulislam-debug" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <div class="contact-grid">
+          <p class="contact-copy reveal">
+            I am interested in opportunities where I can continue learning,
+            contribute to a team and develop my technical skills.
+            You can contact me by email or connect with me on LinkedIn.
+          </p>
+
+          <div class="contact-links reveal">
+
+            <a class="contact-link" href="mailto:jahidulislam141224@gmail.com">
+              <div>
+                <strong>EMAIL</strong>
+                jahidulislam141224@gmail.com
+              </div>
+            </a>
+
+            <a class="contact-link"
+               href="https://www.linkedin.com/in/jahidul-islam-298839382/"
+               target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>LINKEDIN</strong>
+                Connect with me on LinkedIn ↗
+              </div>
+            </a>
+
+            <a class="contact-link"
+               href="https://github.com/jahidulislam-debug"
+               target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>GITHUB</strong>
+                View my GitHub profile ↗
+              </div>
+            </a>
+
           </div>
-          <p style="font-size:12px;margin-top:22px;">Add your CV download link here when your CV is ready.</p>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Jahidul Islam. All rights reserved.</span>
-      <span>Designed with curiosity and technology.</span>
+    <div class="container">
+      © <span id="year"></span> Jahidul Islam. Built with curiosity and code.
     </div>
   </footer>
 
   <script>
     // Mobile navigation
-    const menuButton = document.getElementById("menuButton");
+    const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
-    menuButton.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "×" : "☰";
     });
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
     });
 
-    // Scroll reveal animation
-    const observer = new IntersectionObserver(entries => {
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+    document.querySelectorAll(".reveal").forEach(element => {
+      revealObserver.observe(element);
+    });
 
-    // Animated background particles and connecting lines
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-    let width, height;
+    // Respect reduced-motion preferences
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      const count = Math.min(75, Math.floor(width / 17));
+    // Particle network background
+    const particleCanvas = document.getElementById("particleCanvas");
+    const pctx = particleCanvas.getContext("2d");
+    let particles = [];
+    let particleWidth = 0;
+    let particleHeight = 0;
+
+    function resizeParticles() {
+      const rect = particleCanvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      particleWidth = rect.width;
+      particleHeight = rect.height;
+
+      particleCanvas.width = particleWidth * dpr;
+      particleCanvas.height = particleHeight * dpr;
+      pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.min(75, Math.floor(particleWidth / 14));
+
       particles = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
+        x: Math.random() * particleWidth,
+        y: Math.random() * particleHeight,
         vx: (Math.random() - .5) * .35,
-        vy: (Math.random() - .5) * .35
+        vy: (Math.random() - .5) * .35,
+        radius: Math.random() * 1.6 + .5
       }));
     }
 
     function drawParticles() {
-      ctx.clearRect(0, 0, width, height);
+      pctx.clearRect(0, 0, particleWidth, particleHeight);
 
       particles.forEach((p, i) => {
         if (!reducedMotion) {
           p.x += p.vx;
           p.y += p.vy;
-          if (p.x < 0 || p.x > width) p.vx *= -1;
-          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          if (p.x < 0 || p.x > particleWidth) p.vx *= -1;
+          if (p.y < 0 || p.y > particleHeight) p.vy *= -1;
         }
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(84,229,255,.65)";
-        ctx.fill();
+        pctx.beginPath();
+        pctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        pctx.fillStyle = "rgba(95, 205, 225, .65)";
+        pctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
+          const other = particles[j];
+          const dx = p.x - other.x;
+          const dy = p.y - other.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 115) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(65,145,255,${.13 * (1 - distance / 115)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
+            pctx.beginPath();
+            pctx.moveTo(p.x, p.y);
+            pctx.lineTo(other.x, other.y);
+            pctx.strokeStyle = `rgba(75, 170, 205, ${.15 * (1 - distance / 115)})`;
+            pctx.lineWidth = .7;
+            pctx.stroke();
           }
         }
       });
@@ -666,9 +1180,135 @@
       if (!reducedMotion) requestAnimationFrame(drawParticles);
     }
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+    resizeParticles();
     drawParticles();
+
+    window.addEventListener("resize", () => {
+      resizeParticles();
+      if (reducedMotion) drawParticles();
+    });
+
+    // Interactive DNA helix
+    const dnaCanvas = document.getElementById("dnaCanvas");
+    const dctx = dnaCanvas.getContext("2d");
+    const dnaStage = document.getElementById("dnaStage");
+
+    let dnaW = 0;
+    let dnaH = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let dnaTime = 0;
+
+    function resizeDNA() {
+      const rect = dnaCanvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      dnaW = rect.width;
+      dnaH = rect.height;
+
+      dnaCanvas.width = dnaW * dpr;
+      dnaCanvas.height = dnaH * dpr;
+      dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function drawDNA() {
+      dctx.clearRect(0, 0, dnaW, dnaH);
+
+      if (!reducedMotion) {
+        pointerX += (targetX - pointerX) * .045;
+        pointerY += (targetY - pointerY) * .045;
+        dnaTime += .012;
+      }
+
+      const centerX = dnaW / 2 + pointerX * 22;
+      const centerY = dnaH / 2 + pointerY * 12;
+      const amplitude = Math.min(75, dnaW * .19);
+      const turns = 2.3;
+      const steps = 150;
+      const phase = dnaTime;
+
+      // Draw connecting rungs
+      for (let i = 0; i <= steps; i += 3) {
+        const t = i / steps;
+        const y = centerY + (t - .5) * dnaH * .86;
+        const angle = t * Math.PI * 2 * turns + phase;
+
+        const x1 = centerX + Math.sin(angle) * amplitude;
+        const x2 = centerX + Math.sin(angle + Math.PI) * amplitude;
+
+        const depth = (Math.cos(angle) + 1) / 2;
+
+        dctx.beginPath();
+        dctx.moveTo(x1, y);
+        dctx.lineTo(x2, y);
+        dctx.strokeStyle = `rgba(110, 190, 220, ${.12 + depth * .25})`;
+        dctx.lineWidth = 1.2;
+        dctx.stroke();
+      }
+
+      // Draw both DNA strands
+      [0, Math.PI].forEach((offset, strand) => {
+        dctx.beginPath();
+
+        for (let i = 0; i <= steps; i++) {
+          const t = i / steps;
+          const y = centerY + (t - .5) * dnaH * .86;
+          const angle = t * Math.PI * 2 * turns + phase + offset;
+          const x = centerX + Math.sin(angle) * amplitude;
+
+          if (i === 0) dctx.moveTo(x, y);
+          else dctx.lineTo(x, y);
+        }
+
+        const gradient = dctx.createLinearGradient(0, 0, dnaW, dnaH);
+        gradient.addColorStop(0, strand === 0 ? "#42d9e8" : "#668aff");
+        gradient.addColorStop(1, strand === 0 ? "#668aff" : "#42d9e8");
+
+        dctx.strokeStyle = gradient;
+        dctx.lineWidth = 3;
+        dctx.shadowBlur = 12;
+        dctx.shadowColor = strand === 0 ? "#42d9e8" : "#668aff";
+        dctx.stroke();
+        dctx.shadowBlur = 0;
+
+        // Nodes along the strands
+        for (let i = 0; i <= steps; i += 9) {
+          const t = i / steps;
+          const y = centerY + (t - .5) * dnaH * .86;
+          const angle = t * Math.PI * 2 * turns + phase + offset;
+          const x = centerX + Math.sin(angle) * amplitude;
+
+          dctx.beginPath();
+          dctx.arc(x, y, 3.2, 0, Math.PI * 2);
+          dctx.fillStyle = strand === 0 ? "#75f0f1" : "#91aaff";
+          dctx.fill();
+        }
+      });
+
+      if (!reducedMotion) requestAnimationFrame(drawDNA);
+    }
+
+    dnaStage.addEventListener("pointermove", (event) => {
+      const rect = dnaStage.getBoundingClientRect();
+      targetX = ((event.clientX - rect.left) / rect.width - .5) * 2;
+      targetY = ((event.clientY - rect.top) / rect.height - .5) * 2;
+    });
+
+    dnaStage.addEventListener("pointerleave", () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    resizeDNA();
+    drawDNA();
+
+    window.addEventListener("resize", () => {
+      resizeDNA();
+      if (reducedMotion) drawDNA();
+    });
   </script>
+
 </body>
 </html>
