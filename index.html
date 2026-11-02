@@ -1,1314 +1,229 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07111f">
-  <meta name="description" content="Jahidul Islam - Applied AI, UX Research and Technical Support Portfolio">
-  <title>Jahidul Islam | AI & Technology Portfolio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #07111f;
-      --navy-light: #101e30;
-      --cyan: #42d9e8;
-      --blue: #527bff;
-      --ink: #172335;
-      --muted: #64748b;
-      --paper: #f5f7fb;
-      --white: #ffffff;
-      --line: #e4e9f1;
-      --mono: "DM Mono", monospace;
-      --font: "Inter", sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      font-family: var(--font);
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: auto;
-    }
-
-    /* Navigation */
-
-    .navbar {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 100;
-      background: rgba(7, 17, 31, .92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .nav-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      color: white;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -.5px;
-    }
-
-    .logo span {
-      color: var(--cyan);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #c5d0df;
-      font-size: .87rem;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--cyan);
-    }
-
-    .menu-toggle {
-      display: none;
-      color: white;
-      border: 0;
-      background: transparent;
-      font-size: 1.7rem;
-      cursor: pointer;
-    }
-
-    /* Hero */
-
-    .hero {
-      position: relative;
-      min-height: 730px;
-      padding: 150px 0 100px;
-      display: flex;
-      align-items: center;
-      color: white;
-      background:
-        radial-gradient(ellipse at 75% 45%, rgba(33, 103, 156, .24), transparent 45%),
-        linear-gradient(135deg, #07111f 0%, #0b1930 55%, #101b32 100%);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    #particleCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      align-items: center;
-      gap: 45px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--cyan);
-      font-family: var(--mono);
-      font-size: .78rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 25px;
-      height: 1px;
-      background: var(--cyan);
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.1rem);
-      line-height: 1.08;
-      letter-spacing: -3px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: var(--cyan);
-    }
-
-    .hero-description {
-      color: #b7c5d7;
-      max-width: 570px;
-      font-size: 1.04rem;
-      margin-bottom: 30px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-bottom: 35px;
-    }
-
-    .hero-tags span {
-      border: 1px solid rgba(66,217,232,.25);
-      background: rgba(66,217,232,.06);
-      color: #c5f5f8;
-      border-radius: 30px;
-      padding: 7px 13px;
-      font-family: var(--mono);
-      font-size: .72rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      padding: 12px 21px;
-      border-radius: 7px;
-      font-size: .9rem;
-      font-weight: 700;
-      transition: transform .2s, background .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      background: var(--cyan);
-      color: #06121e;
-    }
-
-    .btn-primary:hover {
-      background: #8af0f5;
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,.35);
-      color: white;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,.08);
-    }
-
-    /* DNA visual */
-
-    .dna-stage {
-      min-height: 430px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      perspective: 900px;
-    }
-
-    #dnaCanvas {
-      width: 100%;
-      max-width: 490px;
-      height: 430px;
-      display: block;
-    }
-
-    .code-float {
-      position: absolute;
-      color: var(--cyan);
-      font-family: var(--mono);
-      font-size: .78rem;
-      opacity: .65;
-      animation: float 5s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .code-one { top: 8%; left: 4%; }
-    .code-two { top: 24%; right: 0; animation-delay: 1s; }
-    .code-three { bottom: 16%; left: 2%; animation-delay: 2s; }
-    .code-four { bottom: 5%; right: 9%; animation-delay: .5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    /* General sections */
-
-    section.content-section {
-      padding: 95px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 42px;
-    }
-
-    .section-kicker {
-      color: #168c9b;
-      font-family: var(--mono);
-      font-size: .75rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-heading h2 {
-      color: var(--ink);
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      line-height: 1.2;
-      letter-spacing: -1.3px;
-    }
-
-    .section-heading p {
-      max-width: 650px;
-      margin-top: 13px;
-      color: var(--muted);
-    }
-
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 55px;
-      align-items: start;
-    }
-
-    .about-copy p {
-      color: #536176;
-      margin-bottom: 17px;
-    }
-
-    .about-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      padding: 27px;
-      box-shadow: 0 12px 35px rgba(20,40,70,.04);
-    }
-
-    .about-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 17px;
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: .88rem;
-    }
-
-    .info-row:last-child {
-      border-bottom: 0;
-    }
-
-    .info-row span:first-child {
-      color: var(--muted);
-    }
-
-    .info-row span:last-child {
-      font-weight: 600;
-      text-align: right;
-    }
-
-    /* Projects */
-
-    .projects-section {
-      background: #edf1f7;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .project-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      padding: 29px;
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(20,40,70,.09);
-    }
-
-    .project-number {
-      color: #168c9b;
-      font-family: var(--mono);
-      font-size: .77rem;
-      margin-bottom: 17px;
-    }
-
-    .project-card h3 {
-      font-size: 1.22rem;
-      line-height: 1.4;
-      margin-bottom: 13px;
-    }
-
-    .project-card p {
-      color: var(--muted);
-      font-size: .91rem;
-      margin-bottom: 20px;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 19px;
-    }
-
-    .project-tags span {
-      background: #edf7f8;
-      color: #167c89;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-family: var(--mono);
-      font-size: .68rem;
-    }
-
-    .project-note {
-      color: #78869a;
-      font-size: .78rem;
-      font-style: italic;
-    }
-
-    /* Skills */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 17px;
-    }
-
-    .skill-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      padding: 23px;
-    }
-
-    .skill-card .skill-icon {
-      color: #168c9b;
-      font-family: var(--mono);
-      font-size: .82rem;
-      margin-bottom: 13px;
-    }
-
-    .skill-card h3 {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .skill-card p {
-      color: var(--muted);
-      font-size: .86rem;
-    }
-
-    /* Experience and education */
-
-    .timeline {
-      border-left: 2px solid #cfe4e8;
-      margin-left: 8px;
-      padding-left: 28px;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-bottom: 30px;
-    }
-
-    .timeline-item:last-child {
-      padding-bottom: 0;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: var(--cyan);
-      border: 3px solid white;
-      border-radius: 50%;
-      left: -36px;
-      top: 6px;
-      box-shadow: 0 0 0 2px #b6dfe4;
-    }
-
-    .timeline-item h3 {
-      font-size: 1.04rem;
-    }
-
-    .timeline-meta {
-      color: #168c9b;
-      font-family: var(--mono);
-      font-size: .75rem;
-      margin: 4px 0 8px;
-    }
-
-    .timeline-item p {
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 65px;
-    }
-
-    /* Contact */
-
-    .contact-section {
-      background: var(--navy);
-      color: white;
-    }
-
-    .contact-section .section-heading h2 {
-      color: white;
-    }
-
-    .contact-section .section-heading p {
-      color: #aebdd0;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .contact-copy {
-      color: #b7c5d7;
-      max-width: 480px;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 13px;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      padding: 15px 17px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 8px;
-      color: #e0eaf4;
-      overflow-wrap: anywhere;
-      transition: border .2s, background .2s;
-    }
-
-    .contact-link:hover {
-      border-color: var(--cyan);
-      background: rgba(66,217,232,.06);
-    }
-
-    .contact-link strong {
-      display: block;
-      color: var(--cyan);
-      font-size: .72rem;
-      font-family: var(--mono);
-      font-weight: 400;
-      margin-bottom: 3px;
-    }
-
-    /* Footer */
-
-    footer {
-      background: #050c16;
-      color: #8fa0b5;
-      padding: 23px 0;
-      text-align: center;
-      font-size: .8rem;
-    }
-
-    /* Reveal animation */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* Responsive */
-
-    @media (max-width: 850px) {
-      .hero-grid,
-      .about-grid,
-      .contact-grid,
-      .two-column {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 130px;
-      }
-
-      .dna-stage {
-        min-height: 350px;
-      }
-
-      #dnaCanvas {
-        height: 350px;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .about-grid,
-      .two-column {
-        gap: 35px;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        background: #091525;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        border-top: 1px solid rgba(255,255,255,.08);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 125px 0 65px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1.8px;
-      }
-
-      .project-grid,
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section.content-section {
-        padding: 70px 0;
-      }
-
-      .section-heading {
-        margin-bottom: 30px;
-      }
-
-      .dna-stage {
-        min-height: 290px;
-      }
-
-      #dnaCanvas {
-        height: 290px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jahidul Islam – Digital World Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#dff8ee;--muted:#93b8a8;--g:#00ff9c;--c:#38e8ff;--a:#ffd36b;--v:#8f7bff;--line:rgba(0,255,156,.25);color-scheme:dark;
+--hd:'Chakra Petch',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#020805;color:var(--ink);font:400 1rem/1.6 'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+.off #gl{display:none}
+body{background:radial-gradient(ellipse at 50% 30%,#06261b,#020805 70%)}
+#fade{position:fixed;inset:0;z-index:40;opacity:0;pointer-events:none}
+#intro{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+#intro h1{font:700 clamp(2.6rem,10vw,6.5rem)/1 var(--hd);letter-spacing:-.02em;margin:0 0 12px;text-shadow:0 0 40px rgba(0,255,156,.5);animation:up 1.2s both}
+#intro p{color:var(--muted);font-size:1.15rem;margin:0 0 30px;animation:up 1.2s .5s both}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.btn{display:inline-block;font:700 1rem var(--hd);letter-spacing:.02em;color:#02140d;background:var(--g);border:0;border-radius:6px;padding:14px 30px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;margin:0 10px 10px 0}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 36px rgba(0,255,156,.6)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+#enter{animation:up 1.2s 1s both}
+header.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;height:60px;display:none;align-items:center;justify-content:space-between;gap:10px;padding:0 20px;background:rgba(2,10,6,.82);border-bottom:1px solid var(--line)}
+.ready header.top{display:flex}
+.logo{font:700 1.1rem var(--hd);color:var(--g);text-decoration:none}
+nav{display:flex;align-items:center;gap:14px}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav ul a{display:block;text-decoration:none;color:var(--muted);padding:6px 12px;border-radius:6px;font:500 .95rem var(--hd);transition:color .2s,background .2s}
+nav ul a:hover{color:var(--ink)}nav ul a.on{color:#02140d;background:var(--g)}
+.tog,.burger{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:6px 12px;font:600 .8rem 'Instrument Sans',sans-serif;cursor:pointer}
+.burger{display:none;color:var(--ink)}
+.sec{position:fixed;inset:0;z-index:10;display:none;overflow-y:auto;padding:84px 24px 76px;pointer-events:none;opacity:0}
+.box{pointer-events:auto;width:min(600px,100%);background:rgba(2,10,6,.84);border:1px solid var(--line);border-radius:14px;padding:30px;box-shadow:0 0 60px rgba(0,255,156,.08)}
+h2{font:700 clamp(1.8rem,4vw,2.4rem)/1.15 var(--hd);margin:0 0 6px}
+h2::after{content:"";display:block;width:56px;height:3px;background:var(--g);margin:10px 0 18px}
+h3{font:700 1.3rem var(--hd);margin:0 0 4px}
+h4{margin:16px 0 6px;font:700 .95rem var(--hd);color:var(--g)}
+p{margin:0 0 12px}.m{color:var(--muted)}
+ul.pl{margin:0;padding-left:20px;color:var(--muted)}ul.pl li{margin-bottom:3px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.tags span{padding:3px 12px;border:1px solid var(--line);border-radius:999px;font-size:.88rem;color:var(--c)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+.facts div{padding:14px;border:1px solid var(--line);border-radius:10px}
+.facts b{display:block;font:700 1.2rem var(--hd)}.facts span{color:var(--muted);font-size:.88rem}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{padding:8px 16px;border-radius:6px;border:1px solid var(--line);background:none;color:var(--muted);font:700 .9rem var(--hd);cursor:pointer}
+.tabs button[aria-selected=true]{background:#8f7bff;border-color:#8f7bff;color:#fff}
+.kind{color:var(--a);font-weight:600;font-size:.92rem}
+.note{font-size:.9rem;color:var(--muted);border-left:3px solid var(--a);padding-left:12px}
+.sk{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.06);color:var(--muted);padding:6px 4px;font:inherit;cursor:pointer}
+.sk b{color:var(--ink);font-weight:600;font-size:.85rem;text-align:right}
+.sk:hover,.sk.on{background:rgba(0,255,156,.1);color:var(--ink)}
+#skinfo{min-height:1.6em;color:var(--a);font-weight:600;margin:10px 0 0}
+.tl{list-style:none;margin:0 0 8px;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding-bottom:18px}
+.tl li::before{content:"";position:absolute;left:-29px;top:7px;width:12px;height:12px;border-radius:50%;background:#020805;border:3px solid var(--g)}
+.tl span{color:var(--a);font-size:.88rem;font-weight:600}.tl b{display:block;font:700 1.05rem var(--hd)}.tl p{margin:2px 0 0;color:var(--muted)}
+.holo{border-color:rgba(56,232,255,.5);box-shadow:0 0 60px rgba(56,232,255,.18);background:linear-gradient(rgba(56,232,255,.05),rgba(2,10,6,.85)),repeating-linear-gradient(0deg,rgba(56,232,255,.06) 0 1px,transparent 1px 4px),rgba(2,10,6,.84)}
+.holo h2::after{background:var(--c)}.holo h4{color:var(--c)}
+.mail{display:inline-block;font:700 clamp(1.05rem,4vw,1.4rem) var(--hd);word-break:break-all;border-bottom:3px solid var(--g);text-decoration:none;margin-bottom:16px}
+.pager{position:fixed;left:0;right:0;bottom:env(safe-area-inset-bottom,0px);z-index:20;display:none;justify-content:center;align-items:center;gap:14px;height:56px;color:var(--muted);font:500 .9rem var(--hd);pointer-events:none}
+.ready .pager{display:flex}
+.pager button{pointer-events:auto;background:rgba(2,10,6,.85);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:7px 16px;font:inherit;cursor:pointer}
+@media(max-width:899px){.sec{padding:34vh 12px 70px}.box{width:100%;padding:22px}}
+@media(max-width:820px){nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:#020d08;border-bottom:1px solid var(--line);padding:6px}nav ul.open{display:flex}.burger{display:block}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
 </head>
-
 <body>
-
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <a href="#home" class="logo">JAHIDUL<span>.</span></a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
-        ☰
-      </button>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <header class="hero" id="home">
-    <canvas id="particleCanvas"></canvas>
-
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="eyebrow">Technology · Research · Problem Solving</div>
-
-        <h1>Jahidul<br><span>Islam.</span></h1>
-
-        <p class="hero-description">
-          MSc Applied Artificial Intelligence and User Experience graduate
-          with an interest in AI, user-centred technology, technical support
-          and practical problem solving.
-        </p>
-
-        <div class="hero-tags">
-          <span>Artificial Intelligence</span>
-          <span>UX Research</span>
-          <span>Python</span>
-          <span>Technical Support</span>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">Explore my work ↗</a>
-          <a href="#contact" class="btn btn-outline">Contact me</a>
-          <a href="CV.pdf" class="btn btn-outline" download>Download CV ↓</a>
-        </div>
-      </div>
-
-      <div class="dna-stage" id="dnaStage">
-        <span class="code-float code-one">0101 // neural</span>
-        <span class="code-float code-two">&lt;AI /&gt;</span>
-        <span class="code-float code-three">DNA_SEQUENCE</span>
-        <span class="code-float code-four">0x7F · Python</span>
-        <canvas id="dnaCanvas" aria-label="Interactive animated DNA helix"></canvas>
-      </div>
-    </div>
-  </header>
-
-  <main>
-
-    <section class="content-section" id="about">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="section-kicker">01 / About me</div>
-          <h2>Technology with a human perspective.</h2>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-copy reveal">
-            <p>
-              I am a Dundee-based MSc graduate in Applied Artificial
-              Intelligence and User Experience from Abertay University.
-              My academic interests include transparent AI systems,
-              human-computer interaction and user trust in AI-assisted tools.
-            </p>
-
-            <p>
-              My master's project explored how different forms of AI
-              transparency can influence university students' calibrated
-              trust, perceived reliability and judgement confidence.
-              I developed a research prototype using Python and Streamlit.
-            </p>
-
-            <p>
-              Alongside my academic work, I am developing practical
-              technical skills in Python, Windows troubleshooting,
-              Microsoft 365 and networking. I enjoy learning how systems
-              work and helping people solve problems.
-            </p>
-          </div>
-
-          <div class="about-card reveal">
-            <h3>Profile</h3>
-            <div class="info-row">
-              <span>Location</span>
-              <span>Dundee, Scotland</span>
-            </div>
-            <div class="info-row">
-              <span>Qualification</span>
-              <span>MSc, Merit</span>
-            </div>
-            <div class="info-row">
-              <span>University</span>
-              <span>Abertay University</span>
-            </div>
-            <div class="info-row">
-              <span>Interests</span>
-              <span>AI & IT Support</span>
-            </div>
-            <div class="info-row">
-              <span>Languages</span>
-              <span>English, Bengali</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section projects-section" id="projects">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="section-kicker">02 / Selected work</div>
-          <h2>Projects and research.</h2>
-          <p>
-            A selection of academic and independent projects exploring
-            artificial intelligence, software development and data analysis.
-          </p>
-        </div>
-
-        <div class="project-grid">
-
-          <article class="project-card reveal">
-            <div class="project-number">PROJECT 01 / MSc RESEARCH</div>
-            <h3>Transparent AI Study Coach</h3>
-            <p>
-              Designed and evaluated a research prototype investigating
-              how AI transparency affects calibrated trust among university
-              students. The study explored different transparency conditions,
-              perceived reliability and judgement confidence.
-            </p>
-            <div class="project-tags">
-              <span>Python</span>
-              <span>Streamlit</span>
-              <span>UX Research</span>
-              <span>AI Transparency</span>
-              <span>CSV</span>
-            </div>
-            <div class="project-note">
-              Master's project, Abertay University.
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-number">PROJECT 02 / PERSONAL PROJECT</div>
-            <h3>XAUUSD Algorithmic Trading Research Bot</h3>
-            <p>
-              Developed an Expert Advisor research project for MetaTrader 5,
-              focused on gold-market analysis, multi-timeframe conditions,
-              risk controls and structured trade logging. Includes a
-              Shadow Mode approach for testing without placing real-money
-              trades.
-            </p>
-            <div class="project-tags">
-              <span>MQL5</span>
-              <span>MetaTrader 5</span>
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>Data Analysis</span>
-            </div>
-            <div class="project-note">
-              Personal technical project. No profitability claims.
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section" id="skills">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="section-kicker">03 / Capabilities</div>
-          <h2>Skills and technical interests.</h2>
-          <p>
-            Skills developed through postgraduate study, independent
-            projects and practical work experience.
-          </p>
-        </div>
-
-        <div class="skills-grid">
-
-          <div class="skill-card reveal">
-            <div class="skill-icon">01 / AI</div>
-            <h3>Artificial Intelligence</h3>
-            <p>AI transparency, human-AI interaction, calibrated trust and AI-assisted systems.</p>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-icon">02 / UX</div>
-            <h3>UX Research</h3>
-            <p>Research design, user experience evaluation, questionnaires and confidence measures.</p>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-icon">03 / CODE</div>
-            <h3>Programming</h3>
-            <p>Python fundamentals, Streamlit, CSV data handling and MQL5 project development.</p>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-icon">04 / IT</div>
-            <h3>IT Support Learning</h3>
-            <p>Windows troubleshooting, Microsoft 365, Outlook, printer issues and basic networking.</p>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-icon">05 / DATA</div>
-            <h3>Data and Office Tools</h3>
-            <p>Microsoft Office, data entry, structured records and basic data analysis.</p>
-          </div>
-
-          <div class="skill-card reveal">
-            <div class="skill-icon">06 / PEOPLE</div>
-            <h3>Communication</h3>
-            <p>Customer service, query handling, teamwork, adaptability and practical problem solving.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section projects-section" id="experience">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="section-kicker">04 / Professional background</div>
-          <h2>Work experience.</h2>
-        </div>
-
-        <div class="timeline">
-
-          <div class="timeline-item reveal">
-            <h3>Production Operative</h3>
-            <div class="timeline-meta">2 Sisters Food Group · September 2026 – Present</div>
-            <p>
-              Working in a production environment, following operational
-              procedures, maintaining quality and safety standards and
-              contributing to team targets.
-            </p>
-          </div>
-
-          <div class="timeline-item reveal">
-            <h3>Waiter</h3>
-            <div class="timeline-meta">Chillies of Carnoustie · February 2026 – August 2026</div>
-            <p>
-              Supported customer service operations, handled customer
-              requests and worked with colleagues in a busy hospitality
-              environment.
-            </p>
-          </div>
-
-          <div class="timeline-item reveal">
-            <h3>Retail Assistant</h3>
-            <div class="timeline-meta">Tesco, Dundee South Road · November 2025 – January 2026</div>
-            <p>
-              Assisted customers, supported store operations and helped
-              maintain product availability and an organised retail
-              environment.
-            </p>
-          </div>
-
-          <div class="timeline-item reveal">
-            <h3>Production Operative</h3>
-            <div class="timeline-meta">Kettle Produce · Previous experience</div>
-            <p>
-              Worked in a food production environment, supporting
-              production activities and following workplace procedures.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section" id="education">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="section-kicker">05 / Academic background</div>
-          <h2>Education.</h2>
-        </div>
-
-        <div class="two-column">
-
-          <div class="timeline">
-            <div class="timeline-item reveal">
-              <h3>MSc Applied Artificial Intelligence and User Experience</h3>
-              <div class="timeline-meta">Abertay University · 2025–2026</div>
-              <p>
-                Awarded Merit. Focused on applied AI, user experience,
-                human-computer interaction, research methods and machine
-                learning.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline">
-            <div class="timeline-item reveal">
-              <h3>BSc Computer Science and Engineering</h3>
-              <div class="timeline-meta">North South University · Bangladesh</div>
-              <p>
-                Undergraduate study in computer science and engineering,
-                providing an academic foundation in computing and
-                technology.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section contact-section" id="contact">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="section-kicker">06 / Get in touch</div>
-          <h2>Let's connect.</h2>
-          <p>
-            Interested in discussing technology, AI research,
-            technical support opportunities or potential collaborations?
-            Feel free to get in touch.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <p class="contact-copy reveal">
-            I am interested in opportunities where I can continue learning,
-            contribute to a team and develop my technical skills.
-            You can contact me by email or connect with me on LinkedIn.
-          </p>
-
-          <div class="contact-links reveal">
-
-            <a class="contact-link" href="mailto:jahidulislam141224@gmail.com">
-              <div>
-                <strong>EMAIL</strong>
-                jahidulislam141224@gmail.com
-              </div>
-            </a>
-
-            <a class="contact-link"
-               href="https://www.linkedin.com/in/jahidul-islam-298839382/"
-               target="_blank" rel="noopener noreferrer">
-              <div>
-                <strong>LINKEDIN</strong>
-                Connect with me on LinkedIn ↗
-              </div>
-            </a>
-
-            <a class="contact-link"
-               href="https://github.com/jahidulislam-debug"
-               target="_blank" rel="noopener noreferrer">
-              <div>
-                <strong>GITHUB</strong>
-                View my GitHub profile ↗
-              </div>
-            </a>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      © <span id="year"></span> Jahidul Islam. Built with curiosity and code.
-    </div>
-  </footer>
-
-  <script>
-    // Mobile navigation
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "×" : "☰";
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
-      });
-    });
-
-    // Current year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Scroll reveal
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal").forEach(element => {
-      revealObserver.observe(element);
-    });
-
-    // Respect reduced-motion preferences
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Particle network background
-    const particleCanvas = document.getElementById("particleCanvas");
-    const pctx = particleCanvas.getContext("2d");
-    let particles = [];
-    let particleWidth = 0;
-    let particleHeight = 0;
-
-    function resizeParticles() {
-      const rect = particleCanvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-      particleWidth = rect.width;
-      particleHeight = rect.height;
-
-      particleCanvas.width = particleWidth * dpr;
-      particleCanvas.height = particleHeight * dpr;
-      pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const count = Math.min(75, Math.floor(particleWidth / 14));
-
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * particleWidth,
-        y: Math.random() * particleHeight,
-        vx: (Math.random() - .5) * .35,
-        vy: (Math.random() - .5) * .35,
-        radius: Math.random() * 1.6 + .5
-      }));
-    }
-
-    function drawParticles() {
-      pctx.clearRect(0, 0, particleWidth, particleHeight);
-
-      particles.forEach((p, i) => {
-        if (!reducedMotion) {
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if (p.x < 0 || p.x > particleWidth) p.vx *= -1;
-          if (p.y < 0 || p.y > particleHeight) p.vy *= -1;
-        }
-
-        pctx.beginPath();
-        pctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        pctx.fillStyle = "rgba(95, 205, 225, .65)";
-        pctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const other = particles[j];
-          const dx = p.x - other.x;
-          const dy = p.y - other.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 115) {
-            pctx.beginPath();
-            pctx.moveTo(p.x, p.y);
-            pctx.lineTo(other.x, other.y);
-            pctx.strokeStyle = `rgba(75, 170, 205, ${.15 * (1 - distance / 115)})`;
-            pctx.lineWidth = .7;
-            pctx.stroke();
-          }
-        }
-      });
-
-      if (!reducedMotion) requestAnimationFrame(drawParticles);
-    }
-
-    resizeParticles();
-    drawParticles();
-
-    window.addEventListener("resize", () => {
-      resizeParticles();
-      if (reducedMotion) drawParticles();
-    });
-
-    // Interactive DNA helix
-    const dnaCanvas = document.getElementById("dnaCanvas");
-    const dctx = dnaCanvas.getContext("2d");
-    const dnaStage = document.getElementById("dnaStage");
-
-    let dnaW = 0;
-    let dnaH = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let dnaTime = 0;
-
-    function resizeDNA() {
-      const rect = dnaCanvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-      dnaW = rect.width;
-      dnaH = rect.height;
-
-      dnaCanvas.width = dnaW * dpr;
-      dnaCanvas.height = dnaH * dpr;
-      dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function drawDNA() {
-      dctx.clearRect(0, 0, dnaW, dnaH);
-
-      if (!reducedMotion) {
-        pointerX += (targetX - pointerX) * .045;
-        pointerY += (targetY - pointerY) * .045;
-        dnaTime += .012;
-      }
-
-      const centerX = dnaW / 2 + pointerX * 22;
-      const centerY = dnaH / 2 + pointerY * 12;
-      const amplitude = Math.min(75, dnaW * .19);
-      const turns = 2.3;
-      const steps = 150;
-      const phase = dnaTime;
-
-      // Draw connecting rungs
-      for (let i = 0; i <= steps; i += 3) {
-        const t = i / steps;
-        const y = centerY + (t - .5) * dnaH * .86;
-        const angle = t * Math.PI * 2 * turns + phase;
-
-        const x1 = centerX + Math.sin(angle) * amplitude;
-        const x2 = centerX + Math.sin(angle + Math.PI) * amplitude;
-
-        const depth = (Math.cos(angle) + 1) / 2;
-
-        dctx.beginPath();
-        dctx.moveTo(x1, y);
-        dctx.lineTo(x2, y);
-        dctx.strokeStyle = `rgba(110, 190, 220, ${.12 + depth * .25})`;
-        dctx.lineWidth = 1.2;
-        dctx.stroke();
-      }
-
-      // Draw both DNA strands
-      [0, Math.PI].forEach((offset, strand) => {
-        dctx.beginPath();
-
-        for (let i = 0; i <= steps; i++) {
-          const t = i / steps;
-          const y = centerY + (t - .5) * dnaH * .86;
-          const angle = t * Math.PI * 2 * turns + phase + offset;
-          const x = centerX + Math.sin(angle) * amplitude;
-
-          if (i === 0) dctx.moveTo(x, y);
-          else dctx.lineTo(x, y);
-        }
-
-        const gradient = dctx.createLinearGradient(0, 0, dnaW, dnaH);
-        gradient.addColorStop(0, strand === 0 ? "#42d9e8" : "#668aff");
-        gradient.addColorStop(1, strand === 0 ? "#668aff" : "#42d9e8");
-
-        dctx.strokeStyle = gradient;
-        dctx.lineWidth = 3;
-        dctx.shadowBlur = 12;
-        dctx.shadowColor = strand === 0 ? "#42d9e8" : "#668aff";
-        dctx.stroke();
-        dctx.shadowBlur = 0;
-
-        // Nodes along the strands
-        for (let i = 0; i <= steps; i += 9) {
-          const t = i / steps;
-          const y = centerY + (t - .5) * dnaH * .86;
-          const angle = t * Math.PI * 2 * turns + phase + offset;
-          const x = centerX + Math.sin(angle) * amplitude;
-
-          dctx.beginPath();
-          dctx.arc(x, y, 3.2, 0, Math.PI * 2);
-          dctx.fillStyle = strand === 0 ? "#75f0f1" : "#91aaff";
-          dctx.fill();
-        }
-      });
-
-      if (!reducedMotion) requestAnimationFrame(drawDNA);
-    }
-
-    dnaStage.addEventListener("pointermove", (event) => {
-      const rect = dnaStage.getBoundingClientRect();
-      targetX = ((event.clientX - rect.left) / rect.width - .5) * 2;
-      targetY = ((event.clientY - rect.top) / rect.height - .5) * 2;
-    });
-
-    dnaStage.addEventListener("pointerleave", () => {
-      targetX = 0;
-      targetY = 0;
-    });
-
-    resizeDNA();
-    drawDNA();
-
-    window.addEventListener("resize", () => {
-      resizeDNA();
-      if (reducedMotion) drawDNA();
-    });
-  </script>
-
+<canvas id="gl" aria-hidden="true"></canvas><div id="fade"></div>
+<div id="intro"><h1>Jahidul Islam</h1><p>MSc Applied AI and User Experience</p><button class="btn" id="enter">Enter the Digital World</button></div>
+<header class="top"><a class="logo" href="#about">Jahidul Islam</a><nav aria-label="Main"><ul id="menu"></ul><button class="tog" id="fx" aria-pressed="true">3D: on</button><button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button></nav></header>
+
+<section class="sec" id="about"><div class="box"><h2>About</h2>
+<p>I’m an MSc graduate in Applied Artificial Intelligence and User Experience from Abertay University (Merit), with a BSc in Computer Science and Engineering from North South University, Bangladesh.</p>
+<p class="m">My interests combine AI, machine learning, UX research, data analysis, IT support and practical technology solutions. I’m looking for my first role in the UK technology sector.</p>
+<div class="tags"><span>IT support</span><span>AI and machine learning</span><span>Data analysis</span><span>UX research</span></div>
+<div class="facts"><div><b>MSc, Merit</b><span>Abertay University, awarded 8 October 2026</span></div><div><b>2 projects</b><span>One academic, one independent</span></div></div>
+<p style="margin-top:20px"><a class="btn" href="#projects">See my projects</a><a class="btn ghost" href="#contact">Contact</a></p></div></section>
+
+<section class="sec" id="projects"><div class="box"><h2>Projects</h2>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="0">AI study coach</button><button role="tab" aria-selected="false" data-t="1">XAUUSD bot</button></div>
+<div class="tp"><span class="kind">Master’s research project · academic prototype</span><h3>Transparent AI study coach</h3>
+<p class="m">Designing and evaluating a transparent AI study coach to support calibrated trust in university students. I built a prototype to study how transparency in AI advice affects students’ trust and confidence in their own judgement.</p>
+<h4>Four conditions</h4><ul class="pl"><li>No transparency</li><li>AI-generated label</li><li>Label with explanation</li><li>Label, explanation and confidence or uncertainty information</li></ul>
+<h4>Method</h4><ul class="pl"><li>Four low-risk advice scenarios, adult university student participants</li><li>0–100 response sliders, anonymous participant IDs</li><li>CSV data collection and comparative evaluation</li></ul>
+<div class="tags"><span>Python</span><span>Streamlit</span><span>CSV data handling</span><span>Research methodology</span></div></div>
+<div class="tp" hidden><span class="kind">Independent development project</span><h3>XAUUSD trading bot, versions 7.6 to 7.8</h3>
+<p class="m">An Expert Advisor for gold written in MQL5 for MetaTrader 5, with a separate Python tool that analyses its decisions. Shadow Mode tests strategies without placing real-money trades.</p>
+<h4>Strategy and filters</h4><ul class="pl"><li>Multi-timeframe analysis (H1, M15, M5, M1)</li><li>Price action, market structure, breakout and retest, liquidity</li><li>ATR, spread, session and news filters; account survival and risk management</li></ul>
+<h4>Testing and analysis</h4><ul class="pl"><li>Stop-loss and take-profit simulation, CSV trade journaling</li><li>MAE/MFE and R-multiple tracking</li><li>Python script using the MetaTrader 5 API, pandas and NumPy</li></ul>
+<div class="tags"><span>MQL5</span><span>MetaTrader 5</span><span>Python</span><span>pandas</span><span>NumPy</span></div>
+<p class="note">This describes software I built and how I tested it. It makes no claim of proven profitability, and trading carries risk.</p></div></div></section>
+
+<section class="sec" id="skills"><div class="box"><h2>Skills</h2><p class="m">Select a node in the 3D structure or a skill below.</p><div id="sklist"></div><p id="skinfo" aria-live="polite"></p></div></section>
+
+<section class="sec" id="experience"><div class="box"><h2>Work experience</h2><ul class="tl">
+<li><span>September 2026 – present</span><b>Production operative, 2 Sisters Food Group</b><p>Quality control, following procedures and teamwork in a fast-paced setting.</p></li>
+<li><span>February – August 2026</span><b>Waiter, Chillies of Carnoustie</b><p>Customer service and working under pressure.</p></li>
+<li><span>November 2025 – January 2026</span><b>Retail assistant, Tesco</b><p>Communication, attention to detail and time management.</p></li>
+<li><span>Previous</span><b>Production role, Kettle Produce</b></li></ul>
+<p class="m">Transferable skills: teamwork, customer service, communication, reliability and attention to detail.</p></div></section>
+
+<section class="sec" id="education"><div class="box holo"><h2>Education</h2><ul class="tl">
+<li><span>September 2025 – August 2026</span><b>MSc Applied Artificial Intelligence and User Experience, Merit</b><p>Abertay University. Awarded 8 October 2026. 180 SCQF credits, Level 11.</p>
+<ul class="pl"><li>Machine Learning and Artificial Intelligence</li><li>Introduction to Data Science</li><li>User Experience Research</li><li>Case Studies and Research Methods</li><li>Human Psychology, and Individual Differences</li><li>Master’s Project</li></ul></li>
+<li><span>Previous study</span><b>BSc Computer Science and Engineering</b><p>North South University, Bangladesh.</p></li>
+<li><span>Earlier</span><b>Higher Secondary and Secondary School Certificates</b><p>Bangladesh.</p></li></ul></div></section>
+
+<section class="sec" id="contact"><div class="box"><h2>Contact</h2>
+<p class="m">Open to IT support, AI and data roles in the UK.</p>
+<p class="m">Move your cursor up to open the leaf umbrella and down to close it. On a touch screen, drag your finger up or down.</p>
+<a class="mail" href="mailto:jahidulislam141224@gmail.com">jahidulislam141224@gmail.com</a>
+<p><a class="btn ghost" href="https://www.linkedin.com/in/jahidul-islam-298839382/" target="_blank" rel="noopener">LinkedIn</a></p></div></section>
+
+<div class="pager"><button id="prev" aria-label="Previous scene">Prev</button><span id="cnt"></span><button id="next" aria-label="Next scene">Next</button></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+var $=function(i){return document.getElementById(i)},R=Math.random,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,off=false,cur=null,busy=false,pend=null,mx=0,my=0;
+var OR=['about','projects','skills','experience','education','contact'],NM=['About','Projects','Skills','Experience','Education','Contact'];
+var menu=$('menu'),P={};OR.forEach(function(k,i){P[k]=$(k);menu.insertAdjacentHTML('beforeend','<li><a href="#'+k+'">'+NM[i]+'</a></li>')});
+var W=innerWidth,H=innerHeight,ok=true,rd,sc,cam,rig,look,G={},an=!reduce;
+/* skills data */
+var SK=[['MQL5 and MetaTrader 5','Independent project',0],['Python, pandas and NumPy','Analysis script',0],['Streamlit','Project',0],['CSV data handling','Project',0],['UX research','Academic and project',0],['Excel and Microsoft Office','Working',0],['Artificial intelligence','Master’s',1],['Machine learning','Master’s',1],['Data science','Master’s',1],['Human-centred design','Master’s',1],['Research methodology','Master’s',1],['Python','Basic, refreshing',2],['Windows troubleshooting','Learning',2],['Microsoft 365 and Outlook','Learning',2],['Networking, DNS and Wi-Fi','Learning',2],['Printer troubleshooting','Learning',2]],
+GN=['Practical experience','Academic knowledge','Currently developing'],GH=['#00ff9c','#38e8ff','#ffd36b'],CC=[[-6,2,0],[6,3,-2],[0,-4,2]],nodes=[],lab,lx,lt,selI=-1;
+var h='';GN.forEach(function(n,g){h+='<h4>'+n+'</h4>';SK.forEach(function(s,i){if(s[2]===g)h+='<button class="sk" data-i="'+i+'">'+s[0]+'<b>'+s[1]+'</b></button>'})});$('sklist').innerHTML=h;
+/* three */
+try{rd=new THREE.WebGLRenderer({canvas:$('gl'),antialias:false,alpha:true});rd.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
+sc=new THREE.Scene();sc.fog=new THREE.FogExp2(0x020805,.012);cam=new THREE.PerspectiveCamera(60,W/H,.1,400);rig=new THREE.Group();rig.add(cam);sc.add(rig);look=new THREE.Vector3(0,6,-20);rig.position.set(0,2,30);build()}catch(e){ok=false;document.documentElement.classList.add('off')}
+function tex(ch){var k=document.createElement('canvas');k.width=k.height=64;var x=k.getContext('2d');x.font='bold 54px monospace';x.textAlign='center';x.textBaseline='middle';x.fillStyle='#fff';x.shadowColor='#fff';x.shadowBlur=8;x.fillText(ch,32,34);return new THREE.CanvasTexture(k)}
+var T0,T1;
+function bin(a,size,c){var A=[],B=[],i,g=new THREE.Group();for(i=0;i<a.length;i+=3)(i/3%2?A:B).push(a[i],a[i+1],a[i+2]);[[A,T0],[B,T1]].forEach(function(p){var ge=new THREE.BufferGeometry();ge.setAttribute('position',new THREE.Float32BufferAttribute(p[0],3));g.add(new THREE.Points(ge,new THREE.PointsMaterial({map:p[1],size:size,color:c,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})))});return g}
+function mat(c,o){return new THREE.MeshBasicMaterial({color:c,wireframe:o>0,transparent:true,opacity:o||1,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,depthWrite:false})}
+function build(){T0=tex('0');T1=tex('1');var i,j,k,a=[],n=W<700?14:24,g;
+/* jungle */
+for(i=0;i<n;i++){var tx=(R()-.5)*70,tz=-R()*90+8;if(Math.abs(tx)<5)tx+=tx<0?-6:6;
+for(j=0;j<80;j++)a.push(tx+(R()-.5)*1.2,-6+R()*24,tz+(R()-.5)*1.2);
+for(j=0;j<130;j++){var u=R()*6.3,v=R()*3.1,r=3+R()*6;a.push(tx+Math.cos(u)*Math.sin(v)*r,17+Math.cos(v)*r*.6,tz+Math.sin(u)*Math.sin(v)*r)}
+for(j=0;j<3;j++){var vx=tx+(R()-.5)*8,vz=tz+(R()-.5)*8,hl=6+R()*8;for(k=0;k<14;k++)a.push(vx+Math.sin(k*.5)*.6,17-k*hl/14,vz)}}
+for(j=0;j<1300;j++)a.push((R()-.5)*90,-6,-R()*100+10);
+G.about=bin(a,.55,0x00ff9c);
+/* portal */
+g=new THREE.Group();g.position.set(0,0,-300);g.rings=[];for(i=0;i<7;i++){var rg=new THREE.Mesh(new THREE.TorusGeometry(1.8+i*.65,.07,8,72),mat(i%2?0x8f7bff:0x38e8ff));rg.rotation.set(i*.5,i*.7,0);g.add(rg);g.rings.push(rg)}
+var ds=new THREE.Mesh(new THREE.IcosahedronGeometry(1.1,1),mat(0x8f7bff,.7));g.add(ds);G.projects=g;
+/* skills */
+g=new THREE.Group();g.position.set(300,0,0);var ls=[],cnt=[0,0,0],tot=[6,5,5];SK.forEach(function(s,idx){var q=s[2],c=CC[q],t=cnt[q]++,y=1-t/(tot[q]-1)*2,r=Math.sqrt(1-y*y),th=t*2.4,p=new THREE.Vector3(c[0]+Math.cos(th)*r*3.2,c[1]+y*3.2,c[2]+Math.sin(th)*r*3.2),m=new THREE.Mesh(new THREE.SphereGeometry(.38,16,12),mat(parseInt(GH[q].slice(1),16)));m.position.copy(p);m.userData.i=idx;g.add(m);nodes.push(m);ls.push(p.x,p.y,p.z,c[0],c[1],c[2])});
+CC.forEach(function(c,q){var p=CC[(q+1)%3];ls.push(c[0],c[1],c[2],p[0],p[1],p[2]);var cm=new THREE.Mesh(new THREE.OctahedronGeometry(.6),mat(parseInt(GH[q].slice(1),16),.9));cm.position.set(c[0],c[1],c[2]);g.add(cm)});
+var lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(ls,3));g.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x66ffcc,transparent:true,opacity:.3})));
+lx=document.createElement('canvas');lx.width=512;lx.height=96;lt=new THREE.CanvasTexture(lx);lab=new THREE.Sprite(new THREE.SpriteMaterial({map:lt,transparent:true,depthTest:false}));lab.scale.set(5.3,1,1);lab.visible=false;g.add(lab);G.skills=g;
+/* experience */
+g=new THREE.Group();g.position.set(-300,0,0);g.grid=new THREE.GridHelper(80,40,0x00ff9c,0x0b4a34);g.grid.position.y=-3;g.add(g.grid);for(i=0;i<4;i++){var ar=new THREE.Mesh(new THREE.TorusGeometry(5,.09,8,48),mat(0x00ff9c));ar.position.set(0,2,-i*7);g.add(ar)}G.experience=g;
+/* education */
+g=new THREE.Group();g.position.set(0,300,0);g.ico=new THREE.Mesh(new THREE.IcosahedronGeometry(4,1),mat(0x38e8ff,.5));g.inn=new THREE.Mesh(new THREE.OctahedronGeometry(2),mat(0x9ff6ff,.6));g.add(g.ico,g.inn);
+var hp=[];for(i=0;i<500;i++){var t=i/500*25;hp.push(Math.cos(t)*6.5,t-12,Math.sin(t)*6.5)}var hg=new THREE.BufferGeometry();hg.setAttribute('position',new THREE.Float32BufferAttribute(hp,3));g.hel=new THREE.Points(hg,new THREE.PointsMaterial({color:0x38e8ff,size:.14,transparent:true,blending:THREE.AdditiveBlending}));g.add(g.hel);
+g.scan=new THREE.Mesh(new THREE.TorusGeometry(6.5,.04,6,80),mat(0x38e8ff));g.scan.rotation.x=Math.PI/2;g.add(g.scan);G.education=g;
+/* contact */
+g=new THREE.Group();g.position.set(0,-300,0);
+function leafTex(rot){var k=document.createElement('canvas');k.width=k.height=64;var x=k.getContext('2d');x.translate(32,32);x.rotate(rot);x.fillStyle='#fff';x.beginPath();x.moveTo(-24,0);x.bezierCurveTo(-8,-22,14,-20,26,0);x.bezierCurveTo(14,20,-8,22,-24,0);x.fill();return new THREE.CanvasTexture(k)}
+g.leaves=[];var ln=W<700?70:160,lc=[0x00ff9c,0x38e8ff,0xffd36b];
+for(i=0;i<3;i++){var lp=new Float32Array(ln*3),vv=new Float32Array(ln*2);for(j=0;j<ln;j++){lp[j*3]=(R()-.5)*50;lp[j*3+1]=-8+R()*26;lp[j*3+2]=(R()-.5)*8;vv[j*2]=.6+R()*.8;vv[j*2+1]=R()*6}
+var lg2=new THREE.BufferGeometry();lg2.setAttribute('position',new THREE.BufferAttribute(lp,3));var lpt=new THREE.Points(lg2,new THREE.PointsMaterial({map:leafTex(i*1.05),size:1.2,color:lc[i],transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));lpt.vv=vv;g.add(lpt);g.leaves.push(lpt)}
+g.umb=new THREE.Group();var dm=new THREE.Mesh(new THREE.SphereGeometry(2.4,20,10,0,6.283,0,1.5708),mat(0x00ff9c,.6)),df=new THREE.Mesh(new THREE.SphereGeometry(2.36,20,10,0,6.283,0,1.5708),mat(0x00ff9c,.14)),uh=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,3,8),mat(0x9fffd0));uh.position.y=-1.5;g.umb.add(dm,df,uh);g.umb.position.set(0,1,0);g.umb.scale.set(.15,1.1,.15);g.add(g.umb);G.contact=g;
+for(var key in G){sc.add(G[key]);G[key].visible=key==='about'}resize();loop(0)}
+function resize(){W=innerWidth;H=innerHeight;if(!ok)return;rd.setSize(W,H);cam.aspect=W/H;if(W>=900)cam.setViewOffset(W,H,-W*.2,0,W,H);else cam.clearViewOffset();cam.updateProjectionMatrix()}
+addEventListener('resize',resize);
+var openV=0,tgx=0,tgy=1,lastY=null,rc2,pl,hitv,pv;
+function pm(e){mx=e.clientX/W-.5;my=e.clientY/H-.5;if(e.type==='pointerdown')lastY=e.clientY;
+if(lastY!==null)openV=Math.max(0,Math.min(1,openV-(e.clientY-lastY)*.012));lastY=e.clientY;
+if(ok&&cur==='contact'){rc2=rc2||new THREE.Raycaster();pl=pl||new THREE.Plane(new THREE.Vector3(0,0,1),0);hitv=hitv||new THREE.Vector3();pv=pv||new THREE.Vector2();
+pv.set(e.clientX/W*2-1,-(e.clientY/H)*2+1);rc2.setFromCamera(pv,cam);if(rc2.ray.intersectPlane(pl,hitv)){tgx=hitv.x-G.contact.position.x;tgy=hitv.y-G.contact.position.y}}}
+addEventListener('pointermove',pm);addEventListener('pointerdown',pm);
+function loop(ms){if(off||!ok)return;requestAnimationFrame(loop);var t=ms*.001,i,g;
+if(an){cam.position.x+=(mx*1.6-cam.position.x)*.05;cam.position.y+=(-my*.8-cam.position.y)*.05;if(!cur)rig.position.x=Math.sin(t*.2)*3;
+G.about.rotation.z=Math.sin(t*.3)*.01;G.projects.rings.forEach(function(r,i){r.rotation.x+=(i%2?.006:-.004);r.rotation.y+=(i%2?-.003:.005)});
+G.skills.rotation.y=t*.08+mx*.6;G.experience.grid.position.z=(t*2)%2;g=G.education;g.ico.rotation.y=t*.2;g.inn.rotation.x=-t*.3;g.hel.rotation.y=t*.3;g.scan.position.y=Math.sin(t)*5}
+cam.lookAt(look);
+if(cur==='contact'){var gc=G.contact,u=gc.umb,wd=4+3*Math.sin(t*.5),dt=.016,os=.15+.85*openV,ur,ux,uy;
+u.position.x+=(tgx-u.position.x)*.12;u.position.y+=(tgy-u.position.y)*.12;u.scale.set(os,1.1-.25*openV,os);u.rotation.z=Math.max(-.4,Math.min(.4,(u.position.x-tgx)*.15));
+ur=2.4*os*1.05;ux=u.position.x;uy=u.position.y;
+gc.leaves.forEach(function(c){var a=c.geometry.attributes.position,p=a.array,v=c.vv,n=a.count,k,x,y,z,dx,dy,d,f;
+for(k=0;k<n;k++){x=p[k*3]+(an?wd*v[k*2]*dt:0);y=p[k*3+1]+(an?Math.sin(t*2+v[k*2+1])*.03-.35*dt:0);z=p[k*3+2];
+if(x>26||y<-9){x=-26;y=-8+R()*26}
+if(openV>.35){dx=x-ux;dy=y-uy;d=Math.sqrt(dx*dx+dy*dy+z*z);if(dy>-.3&&d<ur){f=ur/(d||1);x=ux+dx*f;y=uy+dy*f;z*=f}}
+p[k*3]=x;p[k*3+1]=y;p[k*3+2]=z}a.needsUpdate=true})}
+rd.render(sc,cam)}
+/* skills select */
+function sel(i){selI=i;var s=SK[i];nodes.forEach(function(n,k){n.scale.setScalar(k===i?1.9:1)});var x=lx.getContext('2d');x.clearRect(0,0,512,96);x.font='600 40px sans-serif';x.textAlign='center';x.fillStyle=GH[s[2]];x.fillText(s[0],256,60);lt.needsUpdate=true;lab.position.copy(nodes[i].position);lab.position.y+=1.2;lab.visible=true;
+$('skinfo').textContent=s[0]+': '+s[1]+' ('+GN[s[2]]+')';document.querySelectorAll('.sk').forEach(function(b){b.classList.toggle('on',+b.dataset.i===i)})}
+$('sklist').addEventListener('click',function(e){var b=e.target.closest('.sk');if(b)sel(+b.dataset.i)});
+$('gl').addEventListener('pointerdown',function(e){if(cur!=='skills'||!ok)return;var rc=new THREE.Raycaster(),v=new THREE.Vector2(e.clientX/W*2-1,-(e.clientY/H)*2+1),hit;rc.setFromCamera(v,cam);hit=rc.intersectObjects(nodes);if(hit.length)sel(hit[0].object.userData.i)});
+/* tabs */
+document.querySelector('.tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=document.querySelectorAll('.tp');this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-selected',x===b)});t.forEach(function(p,i){p.hidden=i!==+b.dataset.t})});
+/* scenes */
+var F=$('fade'),I=$('intro'),up=function(){cam.updateProjectionMatrix()};
+var SCN={about:{r:[0,1.5,12],l:[0,5,-20],cp:['inset(0 0 0 0)','inset(0 0 0 0)'],bg:'#020805'},
+projects:{f:[-6,2,-290],r:[0,0,-284],l:[0,0,-300],cp:['inset(0 0 0 0)','inset(0 0 0 0)'],bg:'#020805',fx:function(d){G.projects.rings.forEach(function(r,i){gsap.from(r.scale,{x:.2,y:.2,z:.2,duration:1.6*d,delay:i*.1*d,ease:'back.out(1.3)'})})}},
+skills:{f:[300,0,48],r:[300,0,17],l:[300,0,0],cp:['inset(100% 0 0 0)','inset(0 0 0 0)'],bg:'#00ff9c',fx:function(d){gsap.fromTo(G.skills.scale,{x:.01,y:.01,z:.01},{x:1,y:1,z:1,duration:1.6*d,ease:'back.out(1.4)'})}},
+experience:{f:[-314,6,30],r:[-300,2,11],l:[-300,1,-24],cp:['inset(0 100% 0 0)','inset(0 0 0 0)'],bg:'#00ff9c'},
+education:{f:[0,308,40],r:[0,300,17],l:[0,300,0],cp:['inset(0 0 100% 0)','inset(0 0 0 0)'],bg:'#38e8ff',fx:function(d){gsap.fromTo(G.education.scale,{x:.01,y:.01,z:.01},{x:1,y:1,z:1,duration:1.4*d,ease:'power3.out'});gsap.fromTo('.holo',{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:1.3*d,delay:.4*d,ease:'power2.out',onComplete:function(){gsap.set('.holo',{clearProps:'clipPath'})}})}},
+contact:{f:[0,-290,32],r:[0,-298,16],l:[0,-299,0],cp:['inset(0 0 100% 0)','inset(0 0 0 0)'],bg:'#00ff9c'}};
+function go(id){if(!SCN[id])return;if(busy){pend=id;return}if(id===cur)return;busy=true;var s=SCN[id],d=(reduce||off||!ok)?0:1,first=!cur,prev=cur,tl=gsap.timeline({onComplete:function(){busy=false;if(pend&&pend!==cur){var q=pend;pend=null;go(q)}pend=null}});
+if(prev)tl.to(P[prev],{opacity:0,y:16,duration:.3*d});
+if(first)tl.to(I,{opacity:0,duration:.8*d,onComplete:function(){I.style.display='none'}});
+else{tl.set(F,{opacity:1,clipPath:s.cp[0],background:s.bg});tl.to(F,{clipPath:s.cp[1],duration:.55*d,ease:'power2.in'})}
+tl.add(function(){if(prev)P[prev].style.display='none';if(ok)for(var k in G)G[k].visible=k===id;if(s.f&&ok){rig.position.set(s.f[0],s.f[1],s.f[2]);look.set(s.l[0],s.l[1],s.l[2])}
+P[id].style.display='block';document.body.classList.add('ready');var i=OR.indexOf(id);$('cnt').textContent=(i+1)+' / 6';document.querySelectorAll('#menu a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)});
+if(ok){s.fx&&s.fx(d)}});
+tl.to(F,{opacity:0,duration:.6*d});
+if(ok){tl.to(rig.position,{x:s.r[0],y:s.r[1],z:s.r[2],duration:2*d,ease:'power3.out'},'<');tl.to(look,{x:s.l[0],y:s.l[1],z:s.l[2],duration:2*d,ease:'power2.out'},'<')}
+tl.fromTo(P[id],{opacity:0,y:30},{opacity:1,y:0,duration:.7*d},'<.3');cur=id;P[id].scrollTop=0}
+/* navigation */
+function hash(){var k=location.hash.slice(1);if(SCN[k])go(k)}
+addEventListener('hashchange',hash);
+$('enter').addEventListener('click',function(){location.hash='about';hash()});
+function step(n){var i=OR.indexOf(cur);if(i<0)return;location.hash=OR[(i+n+6)%6]}
+$('prev').addEventListener('click',function(){step(-1)});$('next').addEventListener('click',function(){step(1)});
+addEventListener('keydown',function(e){if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);if(e.key==='Enter'&&!cur&&document.activeElement.tagName!=='BUTTON'){location.hash='about';hash()}});
+var bg=$('burger');bg.addEventListener('click',function(){bg.setAttribute('aria-expanded',menu.classList.toggle('open'))});menu.addEventListener('click',function(){menu.classList.remove('open');bg.setAttribute('aria-expanded','false')});
+$('fx').addEventListener('click',function(){off=!off;document.documentElement.classList.toggle('off',off);this.textContent='3D: '+(off?'off':'on');this.setAttribute('aria-pressed',!off);if(!off&&ok)loop(0)});
+if(SCN[location.hash.slice(1)]){I.style.display='none';hash()}
+</script>
 </body>
 </html>
